@@ -1,0 +1,11 @@
+App\HealthCheck\HealthCheck:
+  type: entity
+  table: healthcheck
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    lastCheckedAt:
+      type: datetime
