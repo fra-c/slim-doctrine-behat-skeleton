@@ -63,14 +63,10 @@ return [
         return EntityManager::create($settings['database'], $config);
     },
 
-    HealthCheckRepository::class => function (Container $container) {
-        return new DoctrineHealthCheckRepository($container->get(EntityManagerInterface::class));
-    },
-
     /**
      * Controllers
      */
-    HealthAction::class => function (Container $container) {
-        return new HealthAction($container->get(HealthCheckRepository::class));
+    HealthAction::class => function () {
+        return new HealthAction();
     }
 ];

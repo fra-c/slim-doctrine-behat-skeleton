@@ -2,4 +2,4 @@
 
 use App\Action\HealthAction;
 
-$app->get('/health', HealthAction::class);
+$app->get('/', HealthAction::class);

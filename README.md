@@ -14,6 +14,8 @@ Create an `.env` file and edit to your needs:
 
 `$ cp .env.example .env`
 
+Implement the health check based on your needs.
+
 ## Run tests
 
 Run Behat tests with:

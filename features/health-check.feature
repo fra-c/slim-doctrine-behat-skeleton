@@ -1,6 +1,5 @@
 Feature: Healthcheck
 
   Scenario: Successful healthcheck
-    When I hit the "/health" endpoint
-    Then I should get a response with a 200 status
-    And the healthcheck last checked date should be "now"
+    When I check the health of the service
+    Then the service should be healthy

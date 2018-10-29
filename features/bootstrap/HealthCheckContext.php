@@ -14,31 +14,18 @@ class HealthCheckContext implements Context
     private $response;
 
     /**
-     * @When I hit the :endpoint endpoint
+     * @When I check the health of the service
      */
-    public function iHitTheEndpoint($endpoint)
+    public function iHitTheEndpoint()
     {
-        $this->response = $this->request('GET', $endpoint);
+        $this->response = $this->request('GET', '/');
     }
 
     /**
-     * @Then I should get a response with a :responseStatus status
+     * @Then the service should be healthy
      */
-    public function iShouldGetAResponseWithAStatus($responseStatus)
+    public function iShouldGetAResponseWithAStatus()
     {
-        Assert::assertEquals($responseStatus, $this->response->getStatusCode());
-    }
-
-    /**
-     * @Then the healthcheck last checked date should be :when
-     */
-    public function theHealthcheckLastCheckedDateShouldBe($when)
-    {
-        Assert::assertEquals(
-            $this->createApp()->getContainer()->get(HealthCheckRepository::class)->getHealthCheck()->getLastCheckedAt(),
-            new DateTimeImmutable($when),
-            "",
-            2
-        );
+        Assert::assertEquals(200, $this->response->getStatusCode());
     }
 }
